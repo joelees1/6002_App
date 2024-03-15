@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             x:Class="JL_CW_App.Views.LoginPage"
+             x:DataType="viewModels:LoginPageViewModel"
+             xaml:MauiMicro.Autowire="True"
+             Shell.FlyoutBehavior="Disabled"
+             Title="Login">
+    
+    <VerticalStackLayout Padding="30">
+        <Label Text="Username" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
+            <Entry
+                TextChanged="Username_TextChanged"
+                Text="{Binding Username}"
+                Placeholder="username"
+                ClearButtonVisibility="WhileEditing"
+                IsSpellCheckEnabled="False">
+            </Entry>
+        </Frame>
+
+        <Label Text="Password" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,0">
+            <Entry
+                TextChanged="Password_TextChanged"
+                Text="{Binding Password}"
+                Placeholder="password"
+                IsPassword="True"
+                ClearButtonVisibility="WhileEditing">
+            </Entry>
+        </Frame>
+
+        <Button Margin="0,20,0,0"
+                x:Name="LoginButton"
+                Command="{Binding NavigateToMainUiCommand}"
+                Text="Login"/>
+
+        <VerticalStackLayout Padding="10" Margin="0,10,0,0">
+            <Label HorizontalOptions="Center"
+                   FontAttributes="Bold">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <Span FontAttributes="Bold" Text="Don't have an account?  " />
+                        <Span FontAttributes="Bold" Text="Sign Up"
+                              TextColor="{StaticResource Primary}"
+                              TextDecorations="Underline">
+                            <Span.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ValidateCommand}"
+                                                      CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
+                            </Span.GestureRecognizers>
+                        </Span>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>
