@@ -8,26 +8,45 @@
              x:DataType="viewModels:LoginPageViewModel"
              xaml:MauiMicro.Autowire="True"
              Shell.FlyoutBehavior="Disabled"
-             Title="Login">
+             BackgroundColor="WhiteSmoke"
+             Shell.BackgroundColor="WhiteSmoke">
     
-    <VerticalStackLayout Padding="30">
-        <Label Text="Username" />
+    <VerticalStackLayout Padding="15, 0" HorizontalOptions="Center">
+        <Label Text="💷 💵 💶"
+               HorizontalOptions="Center"
+               FontSize="80"
+               Padding="10, 60, 0, 30"/>
+
+        <Label Text="Dough-Joe"
+               HorizontalOptions="Center"
+               FontFamily=""
+               FontSize="35" 
+               FontAttributes="Bold" />
+
+        <Label Text="Join now or sign in for financial insights"
+               HorizontalOptions="Center"
+               FontFamily=""
+               FontSize="16"
+               TextColor="Gray"
+               Padding="20" />
+        
+        <Label Text="Username" Padding="0, 50, 0, 0" FontFamily=""/>
         <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
             <Entry
                 TextChanged="Username_TextChanged"
                 Text="{Binding Username}"
-                Placeholder="username"
+                Placeholder="enter your username"
                 ClearButtonVisibility="WhileEditing"
                 IsSpellCheckEnabled="False">
             </Entry>
         </Frame>
 
-        <Label Text="Password" />
-        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,0">
+        <Label Text="Password" FontFamily=""/>
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
             <Entry
                 TextChanged="Password_TextChanged"
                 Text="{Binding Password}"
-                Placeholder="password"
+                Placeholder="enter your password"
                 IsPassword="True"
                 ClearButtonVisibility="WhileEditing">
             </Entry>
@@ -36,6 +55,9 @@
         <Button Margin="0,20,0,0"
                 x:Name="LoginButton"
                 Command="{Binding NavigateToMainUiCommand}"
+                BackgroundColor="DodgerBlue"
+                FontFamily=""
+                FontAttributes="Bold"
                 Text="Login"/>
 
         <VerticalStackLayout Padding="10" Margin="0,10,0,0">
@@ -45,7 +67,7 @@
                     <FormattedString>
                         <Span FontAttributes="Bold" Text="Don't have an account?  " />
                         <Span FontAttributes="Bold" Text="Sign Up"
-                              TextColor="{StaticResource Primary}"
+                              TextColor="DodgerBlue"
                               TextDecorations="Underline">
                             <Span.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ValidateCommand}"

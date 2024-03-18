@@ -10,25 +10,34 @@
              x:DataType="viewModels:ArticleViewModel"
              Title="Articles">
 
-    <StackLayout Spacing="30">
-        <Label Text="Welcome to the budget app!"
-               Padding="0, 20, 0, 0"
+    <StackLayout>
+        <Label Text="Welcome to Dough-Joe!"
+               Padding="0, 20, 0, 10"
                HorizontalOptions="Center"
+               FontFamily=""
                FontSize="Large" />
 
-        <ListView ItemsSource="{Binding Articles}">
+        <ListView ItemsSource="{Binding Articles}" RowHeight="102">
             <ListView.ItemTemplate>
-                <DataTemplate
-                    x:DataType="models:NewsArticle">
+                <DataTemplate x:DataType="models:NewsArticle">
                     <ViewCell>
-                        <StackLayout Padding="10" Margin="10">
-                            <Label Text="{Binding Title}" />
-                            <Label Text="{Binding Description}" />
-                        </StackLayout>
+                        <Grid Padding="10" RowDefinitions="Auto,Auto">
+                            <Frame BorderColor="LightGray" 
+                                   CornerRadius="10"
+                                   Padding="15">
+                                <StackLayout>
+                                    <Label Text="{Binding Title}" FontAttributes="Bold" FontFamily="" />
+                                    <Label Text="{Binding Description}" FontFamily="" />
+                                    <Label Text="{Binding DatePublished, StringFormat='{0:MMMM d, yyyy}'}" 
+                                           TextColor="Gray" FontSize="12" FontFamily=""/>
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+        
     </StackLayout>
 
 </ContentPage>

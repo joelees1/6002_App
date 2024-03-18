@@ -1,6 +1,8 @@
 ﻿using System.Windows.Input;
 using MauiMicroMvvm;
 using JL_CW_App.Interfaces;
+using JL_CW_App.Views;
+using Microsoft.Maui.Controls;
 
 namespace JL_CW_App.ViewModels
 {
@@ -48,13 +50,11 @@ namespace JL_CW_App.ViewModels
 
         private async Task NavigateToMainUI()
         {
-            
             _appState.CurrentUser = new Models.User()
             {
                 Username = Username,
                 Password = Password
             };
-            
             await Shell.Current.GoToAsync("//ArticlesPage");
         }
 

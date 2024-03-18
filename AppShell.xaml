@@ -7,18 +7,20 @@
     xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
     xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
     xmlns:views="clr-namespace:JL_CW_App.Views"
-    BackgroundColor="{DynamicResource Primary}"
+    BackgroundColor="White"
+    Shell.NavBarHasShadow="True"
+    Shell.TitleColor="{DynamicResource PrimaryDarkText}"
     Shell.TabBarBackgroundColor="{DynamicResource Primary}"
-    Shell.TabBarTitleColor="White"
-    Shell.TitleColor="White"
-    Shell.FlyoutBehavior="Flyout"
-    Shell.TabBarUnselectedColor="Azure"
+    Shell.TabBarTitleColor="Black"
+    Shell.ForegroundColor="Black"
+    Shell.TabBarUnselectedColor="Black"
     xaml:MauiMicro.Autowire="True"
+    Shell.FlyoutBehavior="Flyout"
     x:DataType="viewModels:AppShellViewModel"
     Title="Budget App">
     
     <Shell.FlyoutFooter>
-        <Button WidthRequest="200" Margin="0,0,0,30" Text="Logout" BackgroundColor="Red" Command="{Binding LogOutCommand}" />
+        <Button WidthRequest="250" Margin="0,0,0,30" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
     </Shell.FlyoutFooter>
     
     <ShellContent
@@ -27,12 +29,12 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="login" />
 
-    <Tab Title="ArticlesPage">
+    <Tab Title="Articles">
         <ShellContent
             ContentTemplate="{DataTemplate views:ArticlesPage}"
             Route="ArticlesPage" />
     </Tab>
-    <Tab Title="BmiPage">
+    <Tab Title="Bmi">
         <ShellContent
             ContentTemplate="{DataTemplate views:BmiPage}"
             Route="BmiPage" />
@@ -42,7 +44,7 @@
             ContentTemplate="{DataTemplate views:QuoteGeneratorPage}"
             Route="QuoteGeneratorPage" />
     </Tab>
-    <Tab Title="SavedQuotesPage">
+    <Tab Title="Saved Quotes">
         <ShellContent
             ContentTemplate="{DataTemplate views:SavedQuotes}"
             Route="SavedQuotesPage" />
