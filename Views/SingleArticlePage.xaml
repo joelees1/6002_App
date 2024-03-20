@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             xaml:MauiMicro.Autowire="True"
+             x:Class="JL_CW_App.Views.SingleArticlePage"
+             x:DataType="viewModels:SingleArticleViewModel"
+             Shell.TabBarIsVisible="False">
+    
+    <ScrollView>
+        <StackLayout> 
+            <Label Text="{Binding Article.Title}" FontAttributes="Bold" FontFamily="" />
+            <Label Text="{Binding Article.Description}" FontFamily="" />
+            <Label Text="{Binding Article.PublishedAt, StringFormat='{0:MMMM d, yyyy}'}" 
+                   TextColor="Gray" FontSize="12" FontFamily=""/>
+        </StackLayout>
+    </ScrollView>
+    
+</ContentPage>

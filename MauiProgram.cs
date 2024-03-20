@@ -26,6 +26,7 @@ public static class MauiProgram
 #endif
 		builder.Services
 			.MapView<ArticlesPage, ArticleViewModel>()
+			.MapView<SingleArticlePage, SingleArticleViewModel>()
 			.MapView<BmiPage, BmiPageViewModel>()
 			.MapView<ClassicMauiPage, ClassicMauiPageViewModel>()
 			.MapView<QuoteGeneratorPage, QuoteGeneratorPageViewModel>()
@@ -38,7 +39,6 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IAppState, AppState>();
 		builder.Services.AddSingleton<IQuoteService, QuoteRealService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
-
 
 		return builder.Build();
 	}
