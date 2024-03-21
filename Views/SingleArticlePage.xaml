@@ -9,13 +9,25 @@
              x:DataType="viewModels:SingleArticleViewModel"
              Shell.TabBarIsVisible="False">
     
-    <ScrollView>
-        <StackLayout> 
-            <Label Text="{Binding Article.Title}" FontAttributes="Bold" FontFamily="" />
-            <Label Text="{Binding Article.Description}" FontFamily="" />
+    <StackLayout Margin="20" Spacing="5" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Vertical" VerticalOptions="Start">
+            <Label Text="{Binding Article.Title}"
+                   FontAttributes="Bold"
+                   FontSize="Large"
+                   Padding="0, 0, 0, 15"
+                   FontFamily=""/>
+            <Label Text="{Binding Article.SourceId}" FontAttributes="Bold" FontFamily="" />
             <Label Text="{Binding Article.PublishedAt, StringFormat='{0:MMMM d, yyyy}'}" 
                    TextColor="Gray" FontSize="12" FontFamily=""/>
+            <Label Text="{Binding Article.Description}" FontFamily="" Padding="0,10,0,0"/>
         </StackLayout>
-    </ScrollView>
+        <StackLayout Orientation="Vertical" VerticalOptions="End">
+            <!-- link to the article url that opens the browser-->
+            <Button Text="{Binding Article.Url}" 
+                    Command="{Binding OpenArticleCommand}"
+                    Margin="0, 20, 0, 0"
+                    BackgroundColor="DodgerBlue"/>
+        </StackLayout>
+    </StackLayout>
     
 </ContentPage>

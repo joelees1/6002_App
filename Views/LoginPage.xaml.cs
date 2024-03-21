@@ -2,19 +2,18 @@
 
 public partial class LoginPage : ContentPage
 {
-    public LoginPage(ViewModels.LoginPageViewModel viewModel)
+    public LoginPage()
     {
         InitializeComponent();
-        BindingContext = viewModel;
     }
 
-    void Username_TextChanged(System.Object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
+    void Email_TextChanged(Object sender, TextChangedEventArgs e)
     {
         var viewModel = (BindingContext as ViewModels.LoginPageViewModel);
-        viewModel.Username = e.NewTextValue;
+        viewModel.Email = e.NewTextValue;
     }
 
-    void Password_TextChanged(System.Object sender, Microsoft.Maui.Controls.TextChangedEventArgs e)
+    void Password_TextChanged(Object sender, TextChangedEventArgs e)
     {
         var viewModel = (BindingContext as ViewModels.LoginPageViewModel);
         viewModel.Password = e.NewTextValue;

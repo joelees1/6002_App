@@ -32,7 +32,8 @@ public static class MauiProgram
 			.MapView<QuoteGeneratorPage, QuoteGeneratorPageViewModel>()
 			.MapView<SavedQuotes, SavedQuotesViewModel>()
 			.MapView<AppShell, AppShellViewModel>()
-			.MapView<LoginPage, LoginPageViewModel>();
+			.MapView<LoginPage, LoginPageViewModel>()
+			.MapView<RegisterPage, RegisterPageViewModel>();
 
 		builder.Services.AddSingleton<BaseViewModel>();
 		builder.Services.AddSingleton<BaseViewModelMoreSimple>();

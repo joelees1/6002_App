@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             xaml:MauiMicro.Autowire="True"
+             x:DataType="viewModels:RegisterPageViewModel"
+             x:Class="JL_CW_App.Views.RegisterPage"
+             Shell.FlyoutBehavior="Disabled"
+             BackgroundColor="WhiteSmoke"
+             Shell.BackgroundColor="WhiteSmoke"
+             Title="💷 💵 💶">
+
+
+    <VerticalStackLayout Padding="15, 50" HorizontalOptions="Center" MaximumWidthRequest="375">
+        <Label Text="Dough-Joe"
+               HorizontalOptions="Center"
+               FontFamily=""
+               FontSize="35"
+               FontAttributes="Bold" />
+
+        <Label Text="Join now by entering an email and password"
+               HorizontalOptions="Center"
+               FontFamily=""
+               FontSize="16"
+               TextColor="Gray"
+               Padding="20" />
+
+        <Label Text="Email" Padding="0, 50, 0, 0" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
+            <Entry
+                TextChanged="Email_TextChanged" 
+                Placeholder="enter your email"
+                Keyboard="Email"
+                ClearButtonVisibility="WhileEditing"
+                IsSpellCheckEnabled="False">
+            </Entry>
+        </Frame>
+
+        <Label Text="Password" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
+            <Entry
+                TextChanged="Password_TextChanged" 
+                Placeholder="enter your password"
+                IsPassword="True"
+                ClearButtonVisibility="WhileEditing">
+            </Entry>
+        </Frame>
+
+        <Button Margin="0,20,0,0"
+                x:Name="RegisterButton"
+                Command="{Binding RegisterCommand}"
+                BackgroundColor="DodgerBlue"
+                FontFamily=""
+                FontAttributes="Bold"
+                Text="Register" />
+    </VerticalStackLayout>
+</ContentPage>

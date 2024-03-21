@@ -11,7 +11,7 @@
              BackgroundColor="WhiteSmoke"
              Shell.BackgroundColor="WhiteSmoke">
     
-    <VerticalStackLayout Padding="15, 0" HorizontalOptions="Center">
+    <VerticalStackLayout Padding="15, 0" HorizontalOptions="Center" MaximumWidthRequest="375">
         <Label Text="💷 💵 💶"
                HorizontalOptions="Center"
                FontSize="80"
@@ -30,12 +30,13 @@
                TextColor="Gray"
                Padding="20" />
         
-        <Label Text="Username" Padding="0, 50, 0, 0" FontFamily=""/>
+        <Label Text="Email" Padding="0, 50, 0, 0" FontFamily=""/>
         <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
-            <Entry
-                TextChanged="Username_TextChanged"
-                Text="{Binding Username}"
-                Placeholder="enter your username"
+            <Entry 
+                TextChanged="Email_TextChanged" 
+                Text="{Binding Email}" 
+                Placeholder="enter your email"
+                Keyboard="Email"
                 ClearButtonVisibility="WhileEditing"
                 IsSpellCheckEnabled="False">
             </Entry>
@@ -54,12 +55,23 @@
 
         <Button Margin="0,20,0,0"
                 x:Name="LoginButton"
-                Command="{Binding NavigateToMainUiCommand}"
+                Command="{Binding LoginCommand}"
                 BackgroundColor="DodgerBlue"
                 FontFamily=""
                 FontAttributes="Bold"
                 Text="Login"/>
+        
+        <Button Margin="0,20,0,0"
+                x:Name="RegisterButton"
+                Command="{Binding NavigateToRegisterPageCommand}"
+                BorderColor="Black"
+                BorderWidth="1"
+                TextColor="Black"
+                FontFamily=""
+                FontAttributes="Bold"
+                Text="Register"/>
 
+        <!-- tap gesture recognizer broken: github issue https://github.com/dotnet/maui/issues/4734
         <VerticalStackLayout Padding="10" Margin="0,10,0,0">
             <Label HorizontalOptions="Center"
                    FontAttributes="Bold">
@@ -70,14 +82,13 @@
                               TextColor="DodgerBlue"
                               TextDecorations="Underline">
                             <Span.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ValidateCommand}"
-                                                      CommandParameter="https://learn.microsoft.com/dotnet/maui/" />
+                                <TapGestureRecognizer Command="{Binding NavigateToRegisterPageCommand}"/>
                             </Span.GestureRecognizers>
                         </Span>
                     </FormattedString>
                 </Label.FormattedText>
             </Label>
-        </VerticalStackLayout>
+        </VerticalStackLayout>-->
 
     </VerticalStackLayout>
 </ContentPage>
