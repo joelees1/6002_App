@@ -32,7 +32,7 @@ public class RegisterPageViewModel : BaseViewModel
     
     public RegisterPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.url, Constants.key);
+        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
         RegisterCommand = new Command(async () => await Register(),
             () => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password));
     }

@@ -36,9 +36,9 @@ public class LoginPageViewModel : BaseViewModel
 
     public LoginPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.url, Constants.key);
+        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
         _appState = appState;
-        LoginCommand = new Command(execute: async () => await Login(), //ouefheoqufghqioufgheoqhefgoqhefoqhfgoqh remove execute
+        LoginCommand = new Command(async () => await Login(),
             () => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password));
         NavigateToRegisterPageCommand = new Command(async () => await NavigateToRegisterPage());
     }
@@ -70,6 +70,7 @@ public class LoginPageViewModel : BaseViewModel
         // Handle invalid email or password error from Supabase
         catch (Supabase.Gotrue.Exceptions.GotrueException e)
         {
+            Console.WriteLine(e);
             var errorData = JsonConvert.DeserializeObject<Dictionary<string, string>>(e.Message);
 
             if (errorData.ContainsKey("error") && errorData["error"] == "invalid_grant")
