@@ -14,8 +14,7 @@ public class DescriptionConverter : IValueConverter
 
         return text?.Length <= maxLength ? text : text.Substring(0, maxLength) + "...";
     }
-
-
+    
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
     {
         throw new NotImplementedException(); // We likely don't need to convert back

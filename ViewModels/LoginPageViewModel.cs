@@ -21,7 +21,7 @@ public class LoginPageViewModel : BaseViewModel
         set
         {
             Set(value);
-            (LoginCommand as Command).ChangeCanExecute();
+            (LoginCommand as Command)?.ChangeCanExecute();
         }
     }
     public string Password
@@ -30,7 +30,7 @@ public class LoginPageViewModel : BaseViewModel
         set
         {
             Set(value);
-            (LoginCommand as Command).ChangeCanExecute();
+            (LoginCommand as Command)?.ChangeCanExecute();
         }
     }
 

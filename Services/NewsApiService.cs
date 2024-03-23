@@ -8,18 +8,12 @@ namespace JL_CW_App.Services;
 
 public class NewsApiService : IArticleService
 {
-    HttpClient _client;
-    JsonSerializerOptions? _serializerOptions;
-
-    public NewsApiService()
+    private readonly HttpClient _client = new();
+    private readonly JsonSerializerOptions? _serializerOptions = new()
     {
-        _client = new HttpClient();
-        _serializerOptions = new JsonSerializerOptions
-        {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-            WriteIndented = true
-        };
-    }
+        PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+        WriteIndented = true
+    };
     
     public async Task<List<NewsArticle>> GetArticles()
     {
@@ -27,7 +21,7 @@ public class NewsApiService : IArticleService
             Constants.RestEndpointBase, 
             Constants.Endpoints.News, 
             "?apiKey=", Constants.ApiKey, 
-            "&q=student&country=gb&language=en"));
+            "&q=Student&country=gb&language=en&category=lifestyle, business"));
         try
         {
             HttpResponseMessage response = await _client.GetAsync(uri);
