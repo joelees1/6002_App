@@ -44,9 +44,9 @@
             ContentTemplate="{DataTemplate views:QuoteGeneratorPage}"
             Route="QuoteGeneratorPage" />
     </Tab>
-    <Tab Title="Saved Quotes">
+    <Tab Title="Account">
         <ShellContent
-            ContentTemplate="{DataTemplate views:SavedQuotes}"
-            Route="SavedQuotesPage" />
+            ContentTemplate="{DataTemplate views:AccountPage}"
+            Route="AccountPage" />
     </Tab>
 </Shell>
