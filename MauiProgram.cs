@@ -40,6 +40,7 @@ public static class MauiProgram
 		builder.Services.AddSingleton<IAppState, AppState>();
 		builder.Services.AddSingleton<IQuoteService, QuoteRealService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
+		builder.Services.AddSingleton<IArticleService, NewsApiService>();
 
 		return builder.Build();
 	}

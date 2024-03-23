@@ -16,14 +16,14 @@
                    FontSize="Large"
                    Padding="0, 0, 0, 15"
                    FontFamily=""/>
-            <Label Text="{Binding Article.SourceId}" FontAttributes="Bold" FontFamily="" />
-            <Label Text="{Binding Article.PublishedAt, StringFormat='{0:MMMM d, yyyy}'}" 
+            <Label Text="{Binding Article.Source_id}" FontAttributes="Bold" FontFamily="" />
+            <Label Text="{Binding Article.PubDate, StringFormat='{0:MMMM d, yyyy}'}" 
                    TextColor="Gray" FontSize="12" FontFamily=""/>
-            <Label Text="{Binding Article.Description}" FontFamily="" Padding="0,10,0,0"/>
+            <Label Text="{Binding Article.Description}" FontFamily="" Padding="0,20,0,0"/>
         </StackLayout>
         <StackLayout Orientation="Vertical" VerticalOptions="End">
             <!-- link to the article url that opens the browser-->
-            <Button Text="{Binding Article.Url}" 
+            <Button Text="Read Full Article" 
                     Command="{Binding OpenArticleCommand}"
                     Margin="0, 20, 0, 0"
                     BackgroundColor="DodgerBlue"/>

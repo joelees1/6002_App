@@ -21,9 +21,17 @@ public partial class SingleArticleViewModel : ObservableObject
     
     async Task OpenArticleInBrowser()
     {
-        if (Article?.Url != null)
+        try
         {
-            await Browser.OpenAsync(Article.Url);
+            if (Article?.Link != null)
+            {
+                await Browser.OpenAsync(Article.Link);
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            await Shell.Current.DisplayAlert("Error", "Could not open the article in the browser", "OK");
         }
     }
 }
