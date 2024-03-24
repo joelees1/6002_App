@@ -19,6 +19,10 @@
     x:DataType="viewModels:AppShellViewModel"
     Title="Budget App">
     
+    <Shell.FlyoutHeader>
+        <Label Padding="0,10,0,0" Text="Menu" FontFamily="" FontAttributes="Bold" FontSize="18" HorizontalOptions="Center"/>
+    </Shell.FlyoutHeader>
+    
     <Shell.FlyoutFooter>
         <Button WidthRequest="250" Margin="0,0,0,30" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
     </Shell.FlyoutFooter>
@@ -44,9 +48,9 @@
             ContentTemplate="{DataTemplate views:QuoteGeneratorPage}"
             Route="QuoteGeneratorPage" />
     </Tab>
-    <Tab Title="Saved Quotes">
+    <Tab Title="Account">
         <ShellContent
-            ContentTemplate="{DataTemplate views:SavedQuotes}"
-            Route="SavedQuotesPage" />
+            ContentTemplate="{DataTemplate views:AccountPage}"
+            Route="AccountPage" />
     </Tab>
 </Shell>
