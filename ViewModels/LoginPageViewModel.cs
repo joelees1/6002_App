@@ -54,15 +54,16 @@ public class LoginPageViewModel : BaseViewModel
     {
         try
         {
+            // Sign in with email and password to Supabase
+            var response = await _supabaseClient.Auth.SignIn(Email, Password);
+            
             // Set the current user in the app state
             _appState.CurrentUser = new Models.User()
             {
                 Email = Email,
                 Password = Password
             };
-            
-            // Sign in with email and password to Supabase
-            var response = await _supabaseClient.Auth.SignIn(Email, Password);
+            Console.WriteLine($"User: {_appState.CurrentUser.Email}");
             
             // go to articles page if login is successful
             await Shell.Current.GoToAsync("//ArticlesPage");

@@ -1,7 +1,6 @@
 using System.Windows.Input;
 using MauiMicroMvvm;
 using JL_CW_App.Interfaces;
-using JL_CW_App.Views;
 
 namespace JL_CW_App.ViewModels;
 
