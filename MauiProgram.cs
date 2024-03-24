@@ -25,19 +25,22 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 		builder.Services
-			.MapView<ArticlesPage, ArticleViewModel>()
-			.MapView<SingleArticlePage, SingleArticleViewModel>()
+			.MapView<LoginPage, LoginPageViewModel>()
+			.MapView<RegisterPage, RegisterPageViewModel>()
+			.MapView<ArticlesPage, ArticleViewModel>() // home/articles page
+			.MapView<SingleArticlePage, SingleArticleViewModel>() // single article page
+			.MapView<AccountPage, AccountPageViewModel>()
+			.MapView<AppShell, AppShellViewModel>()
+
 			.MapView<BmiPage, BmiPageViewModel>()
 			.MapView<ClassicMauiPage, ClassicMauiPageViewModel>()
 			.MapView<QuoteGeneratorPage, QuoteGeneratorPageViewModel>()
-			.MapView<SavedQuotes, SavedQuotesViewModel>()
-			.MapView<AppShell, AppShellViewModel>()
-			.MapView<LoginPage, LoginPageViewModel>()
-			.MapView<RegisterPage, RegisterPageViewModel>();
+			.MapView<SavedQuotes, SavedQuotesViewModel>();
 
 		builder.Services.AddSingleton<BaseViewModel>();
-		builder.Services.AddSingleton<BaseViewModelMoreSimple>();
 		builder.Services.AddSingleton<IAppState, AppState>();
+		builder.Services.AddSingleton<IArticleService, NewsApiService>();
+		builder.Services.AddSingleton<BaseViewModelMoreSimple>();
 		builder.Services.AddSingleton<IQuoteService, QuoteRealService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 

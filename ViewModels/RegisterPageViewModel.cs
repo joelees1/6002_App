@@ -17,7 +17,7 @@ public class RegisterPageViewModel : BaseViewModel
         set
         {
             Set(value);
-            (RegisterCommand as Command).ChangeCanExecute();
+            (RegisterCommand as Command)?.ChangeCanExecute();
         }
     }
     public string Password
@@ -26,13 +26,13 @@ public class RegisterPageViewModel : BaseViewModel
         set
         {
             Set(value);
-            (RegisterCommand as Command).ChangeCanExecute();
+            (RegisterCommand as Command)?.ChangeCanExecute();
         }
     }
     
     public RegisterPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.url, Constants.key);
+        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
         RegisterCommand = new Command(async () => await Register(),
             () => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password));
     }
@@ -43,6 +43,7 @@ public class RegisterPageViewModel : BaseViewModel
         {
             // Register the user
             var response = await _supabaseClient.Auth.SignUp(Email, Password);
+            
             // go back to login page if successful
             await Shell.Current.DisplayAlert("Sign up successful", "You can now log in", "OK");
             await Shell.Current.Navigation.PopAsync();

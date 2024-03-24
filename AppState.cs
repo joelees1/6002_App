@@ -5,12 +5,7 @@ namespace JL_CW_App
 {
     public class AppState : IAppState
     {
-        public User CurrentUser { get; set; }
-
-        public AppState()
-        {
-
-        }
+        public User CurrentUser { get; set; } = new();
     }
 }
 

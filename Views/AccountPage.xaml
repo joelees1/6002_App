@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             xaml:MauiMicro.Autowire="True"
+             x:Class="JL_CW_App.Views.AccountPage"
+             x:DataType="viewModels:AccountPageViewModel"
+             Title="Account">
+    
+    <StackLayout>
+
+        <Border BackgroundColor="LightBlue" StrokeThickness="0">
+            <StackLayout Margin="15,20">
+                <Label Text="Account Information" FontSize="18" FontFamily="" FontAttributes="Bold"/>
+                <Label Text="Your Email:" FontSize="16" FontFamily="" FontAttributes="Bold" Margin="0,30,0,5"/>
+                <Label Text="{Binding CurrentUser.Email}" FontFamily=""/>
+            </StackLayout>
+        </Border>
+        
+        <StackLayout Margin="15,30,15,0">
+            <Label Text="Change Password" FontSize="18" FontFamily="" FontAttributes="Bold"/>
+            <Label Text="Current Password" FontFamily="" Padding="0,20,0,0"/>
+            <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
+                <Entry
+                    TextChanged="OldPassword_TextChanged"
+                    Text="{Binding OldPassword}"
+                    Placeholder="enter your current password"
+                    IsPassword="True"
+                    IsSpellCheckEnabled="False"
+                    ClearButtonVisibility="WhileEditing">
+                </Entry>
+            </Frame>
+
+            <Label Text="New Password" FontFamily=""/>
+            <Frame CornerRadius="10" Padding="5" Margin="0,10,0,20">
+                <Entry
+                    TextChanged="NewPassword_TextChanged"
+                    Text="{Binding NewPassword}"
+                    Placeholder="enter your new password"
+                    IsPassword="True"
+                    IsSpellCheckEnabled="False"
+                    ClearButtonVisibility="WhileEditing">
+                </Entry>
+            </Frame>
+            
+            <Button Margin="0,20,0,0"
+                    x:Name="ChangePasswordButton"
+                    Command="{Binding ChangePasswordCommand}"
+                    BackgroundColor="DodgerBlue"
+                    FontFamily=""
+                    FontAttributes="Bold"
+                    Text="Save"/>
+            
+        </StackLayout>
+        
+    </StackLayout>
+</ContentPage>
