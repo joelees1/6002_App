@@ -4,7 +4,6 @@ using JL_CW_App.Interfaces;
 using Newtonsoft.Json;
 using Supabase.Gotrue;
 using Client = Supabase.Client;
-using JL_CW_App.Models;
 
 namespace JL_CW_App.ViewModels;
 
@@ -41,13 +40,25 @@ public class AccountPageViewModel : BaseViewModel
             () => !string.IsNullOrEmpty(OldPassword) && !string.IsNullOrEmpty(NewPassword));
     }
     
-    public Models.User CurrentUser => _appState.CurrentUser; // get the user from the app state
+    public Models.User CurrentUser => _appState.CurrentUser; // correctly updating the current user, but ui not updating
+    
+    /* public Models.User CurrentUser
+       {
+           get => _appState.CurrentUser;
+           set
+           {
+               _appState.CurrentUser = value;
+               OnPropertyChanged();
+           }
+       } */
     
     public override void OnAppearing() // Clear the password fields whenever the page appears
     {
         base.OnAppearing();
         OldPassword = string.Empty;
         NewPassword = string.Empty;
+        Console.WriteLine(_appState.CurrentUser.Email);
+        Console.WriteLine(CurrentUser.Email);
     }
     
     /* This function has to login the user to supabase again as it uses a new _supabaseclient using
