@@ -24,7 +24,7 @@
     </Shell.FlyoutHeader>
     
     <Shell.FlyoutFooter>
-        <Button WidthRequest="250" Margin="0,0,0,30" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
+        <Button WidthRequest="250" Margin="0,0,0,40" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
     </Shell.FlyoutFooter>
     
     <ShellContent

@@ -9,6 +9,23 @@
              x:DataType="viewModels:BudgetPageViewModel"
              Title="Budget Page">
     
-    <Label Text="hello"></Label>
+    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20" Margin="0,0,0,100">
+        <Label Text="No budget yet?"
+               FontFamily=""
+               FontSize="Large"
+               HorizontalOptions="Center"/>
+        
+        <Button Text="Create Budget"
+                TextColor="Black"
+                BackgroundColor="SkyBlue"
+                FontFamily=""
+                ContentLayout="Right, 10"
+                WidthRequest="165"
+                Command="{Binding NavigateToCreateBudgetPageCommand}">
+            <Button.ImageSource>
+                <FileImageSource File="fluent_open.png"></FileImageSource>
+            </Button.ImageSource>
+        </Button>
+    </VerticalStackLayout>
     
 </ContentPage>
