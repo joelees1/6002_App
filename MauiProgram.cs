@@ -29,6 +29,7 @@ public static class MauiProgram
 			.MapView<RegisterPage, RegisterPageViewModel>()
 			.MapView<ArticlesPage, ArticleViewModel>() // home/articles page
 			.MapView<SingleArticlePage, SingleArticleViewModel>() // single article page
+			.MapView<BudgetPage, BudgetPageViewModel>() // shows a users budget and expense info
 			.MapView<AccountPage, AccountPageViewModel>()
 			.MapView<AppShell, AppShellViewModel>()
 
