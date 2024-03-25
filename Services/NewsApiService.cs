@@ -20,7 +20,7 @@ public class NewsApiService : IArticleService
         Uri uri = new Uri(string.Concat(
             Constants.RestEndpointBase, 
             Constants.Endpoints.News, 
-            "?apiKey=", Constants.ApiKey, 
+            "?apiKey=", AppConfig.ApiKey, 
             "&q=Student&country=gb&language=en&category=lifestyle, business"));
         try
         {

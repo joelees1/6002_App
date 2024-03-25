@@ -403,3 +403,6 @@ ASALocalRun/
 
 # Local History for Visual Studio
 .localhistory/
+
+# AppConfig.cs file
+Models/AppConfig.cs

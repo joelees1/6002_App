@@ -1,11 +1,23 @@
+using Postgrest.Attributes;
+using Postgrest.Models;
+
 namespace JL_CW_App.Models;
 
-public class Budget 
+[Table("Budgets")]
+public class Budget : BaseModel
 {
-    public double Income { get; set; }
-    public double Rent { get; set; }
-    public double Food { get; set; }
-    public double Transportation { get; set; }
-    public double Entertainment { get; set; }
-    public double Other { get; set; }
+    [Column("User")]
+    public string? User { get; set; }
+    [Column("Income")]
+    public decimal Income { get; set; }
+    [Column("Rent")]
+    public decimal Rent { get; set; }
+    [Column("Food")]
+    public decimal Food { get; set; }
+    [Column("Transport")]
+    public decimal Transport { get; set; }
+    [Column("Entertainment")]
+    public decimal Entertainment { get; set; }
+    [Column("Other")]
+    public decimal Other { get; set; }
 }

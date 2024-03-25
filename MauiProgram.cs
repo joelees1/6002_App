@@ -32,18 +32,12 @@ public static class MauiProgram
 			.MapView<BudgetPage, BudgetPageViewModel>() // shows a users budget and expense info
 			.MapView<CreateBudgetPage, CreateBudgetPageViewModel>() // provides a form to create a budget
 			.MapView<AccountPage, AccountPageViewModel>()
-			.MapView<AppShell, AppShellViewModel>()
-
-			.MapView<BmiPage, BmiPageViewModel>()
-			.MapView<ClassicMauiPage, ClassicMauiPageViewModel>()
-			.MapView<QuoteGeneratorPage, QuoteGeneratorPageViewModel>()
-			.MapView<SavedQuotes, SavedQuotesViewModel>();
+			.MapView<AppShell, AppShellViewModel>();
 
 		builder.Services.AddSingleton<BaseViewModel>();
 		builder.Services.AddSingleton<IAppState, AppState>();
 		builder.Services.AddSingleton<IArticleService, NewsApiService>();
 		builder.Services.AddSingleton<BaseViewModelMoreSimple>();
-		builder.Services.AddSingleton<IQuoteService, QuoteRealService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 
 		return builder.Build();

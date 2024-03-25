@@ -1,4 +1,6 @@
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using JL_CW_App.Interfaces;
 using JL_CW_App.Models;
 using MauiMicroMvvm;
 
@@ -6,56 +8,59 @@ namespace JL_CW_App.ViewModels;
 
 public class CreateBudgetPageViewModel : BaseViewModel
 {
+    private readonly IAppState _appState;
+    private readonly IDatabaseService _databaseService;
+    
     public Budget Budget { get; set; } = new(); 
     public ICommand CreateBudgetCommand { get; set; }
-    public double Income
+    public decimal Income
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
             (CreateBudgetCommand as Command)?.ChangeCanExecute();
         }
     }
-    public double Rent
+    public decimal Rent
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
             (CreateBudgetCommand as Command)?.ChangeCanExecute();
         }
     }
-    public double Food
+    public decimal Food
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
             (CreateBudgetCommand as Command)?.ChangeCanExecute();
         }
     }
-    public double Transportation
+    public decimal Transportation
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
             (CreateBudgetCommand as Command)?.ChangeCanExecute();
         }
     }
-    public double Entertainment
+    public decimal Entertainment
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
             (CreateBudgetCommand as Command)?.ChangeCanExecute();
         }
     }
-    public double Other
+    public decimal Other
     {
-        get => Get<double>();
+        get => Get<decimal>();
         set
         {
             Set(value);
@@ -63,40 +68,41 @@ public class CreateBudgetPageViewModel : BaseViewModel
         }
     }
     
-    public CreateBudgetPageViewModel(ViewModelContext context): base(context)
+    public CreateBudgetPageViewModel(ViewModelContext context, IAppState appState, IDatabaseService databaseService): base(context)
     {
-        //CreateBudgetCommand = new Command(async () => await CreateBudget(), 
-        //  () => Income > 0 && Rent > 0 && Food > 0 && Transportation > 0 && Entertainment > 0 && Other > 0);
+        _appState = appState; 
+        _databaseService = databaseService;
         CreateBudgetCommand = new Command(async () => await CreateBudget(), 
             () => IsBudgetValid()); 
     }
     
-    private bool IsBudgetValid()
+    private bool IsBudgetValid() // Check if all fields are filled and greater than 0
     {
         return Income > 0 && Rent > 0 && Food > 0 && Transportation > 0 && Entertainment > 0 && Other > 0;
     }
     
-    private async Task CreateBudget()
+    private async Task CreateBudget() // Save the budget to the database
     {
         try
         {
-            // Create the budget
+            // Create the budget object
+            Budget.User = _appState.CurrentUser.Email;
             Budget.Income = Income;
             Budget.Rent = Rent;
             Budget.Food = Food;
-            Budget.Transportation = Transportation;
+            Budget.Transport = Transportation;
             Budget.Entertainment = Entertainment;
             Budget.Other = Other;
         
-            // Save the budget
-        
+            // Save the budget using the database service
+            await _databaseService.SaveBudget(Budget);
             await Shell.Current.DisplayAlert("Success", "Budget Created", "OK");
             await Shell.Current.Navigation.PopAsync();
         }
         catch (Exception e)
         {
             Console.WriteLine(e); 
-            await Shell.Current.DisplayAlert("Error", "Failed to create budget", "OK");
+            await Shell.Current.DisplayAlert("Error", "Failed to create budget or one already exists", "OK");
         }
     }
 }
