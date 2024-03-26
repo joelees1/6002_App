@@ -1,5 +1,4 @@
 using System.Windows.Input;
-using CommunityToolkit.Mvvm.Input;
 using JL_CW_App.Interfaces;
 using JL_CW_App.Models;
 using JL_CW_App.Views;
@@ -21,7 +20,7 @@ public partial class BudgetPageViewModel : BaseViewModel
 
     public BudgetPageViewModel(ViewModelContext context, IAppState appState, IDatabaseService databaseService) : base(context)
     {
-        _appState = appState; 
+        _appState = appState;
         _databaseService = databaseService;
         NavigateToCreateBudgetPageCommand = new Command(async () => await NavigateToCreateBudgetPage());
     }
@@ -29,29 +28,21 @@ public partial class BudgetPageViewModel : BaseViewModel
     public override async void OnAppearing()
     {
         base.OnAppearing();
-        try
-        {
-            await GetBudget();
-        }
-        catch (Exception e)
-        {
-            Console.WriteLine(e);
-            throw;
-        }
+        await GetBudget();
     }
     
-    public async Task GetBudget()
+    private async Task GetBudget()
     {
         try
         {
             // Get the budget from the database using the email
             Budget = await _databaseService.GetBudget(_appState.CurrentUser.Email);
-            Console.WriteLine(Budget);
         }
         catch (Exception e)
         {
-            Console.WriteLine(e);
-            throw;
+            Budget = new Budget();
+            Console.WriteLine(e); 
+            await Shell.Current.DisplayAlert("Error", "Error No Budget Exists", "OK");
         }
     }
     

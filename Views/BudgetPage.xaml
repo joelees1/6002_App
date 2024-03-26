@@ -3,13 +3,17 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
              xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
              xaml:MauiMicro.Autowire="True"
              x:Class="JL_CW_App.Views.BudgetPage"
              x:DataType="viewModels:BudgetPageViewModel"
              Title="Budget Page">
+       <!-- xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui" -->
 
-    <ScrollView>
+       <micro:ChartView x:Name="ChartView"></micro:ChartView>
+       
+       <!--<ScrollView>
         <StackLayout>
             <Label Text="{Binding Budget.Income}"
                    FontSize="Medium"
@@ -35,26 +39,6 @@
                    FontSize="Medium"
                    HorizontalOptions="Center" />
         </StackLayout>
-    </ScrollView>
-    
-    <!--<VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20"
-                         Margin="0,0,0,100">
-        <Label Text="No budget yet?"
-               FontFamily=""
-               FontSize="Large"
-               HorizontalOptions="Center" />
-
-        <Button Text="Create Budget"
-                TextColor="Black"
-                BackgroundColor="SkyBlue"
-                FontFamily=""
-                ContentLayout="Right, 10"
-                WidthRequest="165"
-                Command="{Binding NavigateToCreateBudgetPageCommand}">
-            <Button.ImageSource>
-                <FileImageSource File="fluent_open.png"></FileImageSource>
-            </Button.ImageSource>
-        </Button>
-    </VerticalStackLayout>-->
+    </ScrollView>-->
 
 </ContentPage>
