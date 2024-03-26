@@ -20,8 +20,8 @@ public class NewsApiService : IArticleService
         Uri uri = new Uri(string.Concat(
             Constants.RestEndpointBase, 
             Constants.Endpoints.News, 
-            "?apiKey=", Constants.ApiKey, 
-            "&q=Student&country=gb&language=en&category=lifestyle, business"));
+            "?apiKey=", AppConfig.ApiKey, 
+            "&q=Student&country=gb&language=en&category=business"));
         try
         {
             HttpResponseMessage response = await _client.GetAsync(uri);
