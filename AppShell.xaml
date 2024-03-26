@@ -24,7 +24,7 @@
     </Shell.FlyoutHeader>
     
     <Shell.FlyoutFooter>
-        <Button WidthRequest="250" Margin="0,0,0,30" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
+        <Button WidthRequest="250" Margin="0,0,0,40" Text="Logout" BackgroundColor="DarkRed" Command="{Binding LogOutCommand}" />
     </Shell.FlyoutFooter>
     
     <ShellContent
@@ -33,22 +33,17 @@
         ContentTemplate="{DataTemplate views:LoginPage}"
         Route="login" />
 
-    <Tab Title="Articles">
+    <Tab Title="Articles" Icon="articles.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:ArticlesPage}"
             Route="ArticlesPage" />
     </Tab>
-    <Tab Title="Bmi">
+    <Tab Title="Budget" Icon="budget.png">
         <ShellContent
-            ContentTemplate="{DataTemplate views:BmiPage}"
-            Route="BmiPage" />
+            ContentTemplate="{DataTemplate views:BudgetPage}"
+            Route="BudgetPage" />
     </Tab>
-    <Tab Title="Quote Generator">
-        <ShellContent
-            ContentTemplate="{DataTemplate views:QuoteGeneratorPage}"
-            Route="QuoteGeneratorPage" />
-    </Tab>
-    <Tab Title="Account">
+    <Tab Title="Account" Icon="account.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:AccountPage}"
             Route="AccountPage" />

@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using MauiMicroMvvm;
 using JL_CW_App.Interfaces;
+using JL_CW_App.Models;
 using Newtonsoft.Json;
 using Supabase;
 
@@ -32,7 +33,7 @@ public class RegisterPageViewModel : BaseViewModel
     
     public RegisterPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
+        _supabaseClient = new Client(AppConfig.SupabaseUrl, AppConfig.SupabaseKey);
         RegisterCommand = new Command(async () => await Register(),
             () => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password));
     }

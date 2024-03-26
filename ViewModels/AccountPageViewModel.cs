@@ -1,6 +1,7 @@
 using System.Windows.Input;
 using MauiMicroMvvm;
 using JL_CW_App.Interfaces;
+using JL_CW_App.Models;
 using Newtonsoft.Json;
 using Supabase.Gotrue;
 using Client = Supabase.Client;
@@ -34,7 +35,7 @@ public class AccountPageViewModel : BaseViewModel
 
     public AccountPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
+        _supabaseClient = new Client(AppConfig.SupabaseUrl, AppConfig.SupabaseKey);
         _appState = appState;
         ChangePasswordCommand = new Command(async () => await ChangePassword(),
             () => !string.IsNullOrEmpty(OldPassword) && !string.IsNullOrEmpty(NewPassword));

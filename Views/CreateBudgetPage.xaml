@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             xaml:MauiMicro.Autowire="True"
+             x:Class="JL_CW_App.Views.CreateBudgetPage"
+             x:DataType="viewModels:CreateBudgetPageViewModel"
+             Title="Create Budget">
+    
+    <VerticalStackLayout HorizontalOptions="Center" WidthRequest="300">
+        <Label Text="Add your monthly income and major expenses:"
+               HorizontalOptions="Center"
+               FontFamily=""
+               FontSize="16"
+               Padding="20" />
+
+        <Label Text="Income" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Income_TextChanged" 
+                Placeholder="total monthly income (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+        
+        <Label Text="Rent" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Rent_TextChanged" 
+                Placeholder="monthly rent (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+        
+        <Label Text="Food" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Food_TextChanged" 
+                Placeholder="food budget (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+        
+        <Label Text="Transport" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Transport_TextChanged" 
+                Placeholder="transportation budget (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+        
+        <Label Text="Entertainment" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Entertainment_TextChanged" 
+                Placeholder="entertainment budget (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+        
+        <Label Text="Other" FontFamily="" />
+        <Frame CornerRadius="10" Padding="5" Margin="0,10,0,15">
+            <Entry
+                TextChanged="Other_TextChanged" 
+                Placeholder="other expenses (£)"
+                ClearButtonVisibility="WhileEditing"
+                Keyboard="Numeric">
+            </Entry>
+        </Frame>
+
+        <Button Margin="0,20,0,0"
+                BackgroundColor="SkyBlue"
+                TextColor="Black"
+                FontFamily=""
+                FontAttributes="Bold"
+                Command="{Binding CreateBudgetCommand}"
+                Text="Submit" />
+    </VerticalStackLayout>
+    
+</ContentPage>
