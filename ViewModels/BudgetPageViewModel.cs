@@ -11,19 +11,35 @@ public partial class BudgetPageViewModel : BaseViewModel
 {
     private readonly IAppState _appState;
     private readonly IDatabaseService _databaseService;
-    
-    public Budget Budget { get; set; } = new();
+
+    public Budget Budget
+    {
+        get => Get<Budget>();
+        set => Set(value);
+    }
     public ICommand NavigateToCreateBudgetPageCommand { get; set; }
 
     public BudgetPageViewModel(ViewModelContext context, IAppState appState, IDatabaseService databaseService) : base(context)
     {
         _appState = appState; 
         _databaseService = databaseService;
-        //GetBudget();
         NavigateToCreateBudgetPageCommand = new Command(async () => await NavigateToCreateBudgetPage());
     }
     
-    [RelayCommand]
+    public override async void OnAppearing()
+    {
+        base.OnAppearing();
+        try
+        {
+            await GetBudget();
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+    
     public async Task GetBudget()
     {
         try

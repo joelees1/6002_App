@@ -3,23 +3,47 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
-             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
              xaml:MauiMicro.Autowire="True"
              x:Class="JL_CW_App.Views.BudgetPage"
              x:DataType="viewModels:BudgetPageViewModel"
              Title="Budget Page">
+
+    <ScrollView>
+        <StackLayout>
+            <Label Text="{Binding Budget.Income}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Budget.Rent}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Budget.Food}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Budget.Transport}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Budget.Entertainment}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+
+            <Label Text="{Binding Budget.Other}"
+                   FontSize="Medium"
+                   HorizontalOptions="Center" />
+        </StackLayout>
+    </ScrollView>
     
-    <!--<ContentPage.Behaviors>
-        <toolkit:EventToCommandBehavior Command="{Binding GetBudget}" EventName="Appearing" />
-    </ContentPage.Behaviors>-->
-    
-    <VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20" Margin="0,0,0,100">
+    <!--<VerticalStackLayout HorizontalOptions="Center" VerticalOptions="Center" Spacing="20"
+                         Margin="0,0,0,100">
         <Label Text="No budget yet?"
                FontFamily=""
                FontSize="Large"
-               HorizontalOptions="Center"/>
-        
+               HorizontalOptions="Center" />
+
         <Button Text="Create Budget"
                 TextColor="Black"
                 BackgroundColor="SkyBlue"
@@ -31,7 +55,6 @@
                 <FileImageSource File="fluent_open.png"></FileImageSource>
             </Button.ImageSource>
         </Button>
-    </VerticalStackLayout>
-    
-    <!-- show the budget -->
+    </VerticalStackLayout>-->
+
 </ContentPage>
