@@ -14,6 +14,11 @@ public class AccountPageViewModel : BaseViewModel
     private readonly IAppState _appState;
     public ICommand ChangePasswordCommand { get; set; }
 
+    public string Email
+    {
+        get => Get<string>();
+        set => Set(value);
+    }
     public string OldPassword
     {
         get => Get<string>();
@@ -41,25 +46,12 @@ public class AccountPageViewModel : BaseViewModel
             () => !string.IsNullOrEmpty(OldPassword) && !string.IsNullOrEmpty(NewPassword));
     }
     
-    public Models.User CurrentUser => _appState.CurrentUser; // correctly updating the current user, but ui not updating
-    
-    /* public Models.User CurrentUser
-       {
-           get => _appState.CurrentUser;
-           set
-           {
-               _appState.CurrentUser = value;
-               OnPropertyChanged();
-           }
-       } */
-    
     public override void OnAppearing() // Clear the password fields whenever the page appears
     {
         base.OnAppearing();
         OldPassword = string.Empty;
         NewPassword = string.Empty;
-        Console.WriteLine(_appState.CurrentUser.Email);
-        Console.WriteLine(CurrentUser.Email);
+        Email = _appState.CurrentUser.Email;
     }
     
     /* This function has to login the user to supabase again as it uses a new _supabaseclient using
