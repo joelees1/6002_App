@@ -13,8 +13,5 @@ public partial class AppShell : Shell
 		
 		// registration page
 		Routing.RegisterRoute(nameof(RegisterPage), typeof(RegisterPage));
-		
-		// create budget page
-		Routing.RegisterRoute(nameof(CreateBudgetPage), typeof(CreateBudgetPage));
 	}
 }

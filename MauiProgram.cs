@@ -3,6 +3,7 @@ using JL_CW_App.Interfaces;
 using JL_CW_App.Services;
 using JL_CW_App.ViewModels;
 using JL_CW_App.Views;
+using Microcharts.Maui;
 
 namespace JL_CW_App;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
+			.UseMicrocharts()
 			.UseMauiMicroMvvm<AppShell>(
 				"Resources/Styles/Colors.xaml",
 				"Resources/Styles/Styles.xaml")

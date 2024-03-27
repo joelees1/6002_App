@@ -43,6 +43,11 @@
             ContentTemplate="{DataTemplate views:BudgetPage}"
             Route="BudgetPage" />
     </Tab>
+    <Tab Title="Add Budget" Icon="save.png">
+        <ShellContent
+            ContentTemplate="{DataTemplate views:CreateBudgetPage}"
+            Route="CreateBudgetPage" />
+    </Tab>
     <Tab Title="Account" Icon="account.png">
         <ShellContent
             ContentTemplate="{DataTemplate views:AccountPage}"

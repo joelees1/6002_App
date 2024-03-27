@@ -97,7 +97,7 @@ public class CreateBudgetPageViewModel : BaseViewModel
             // Save the budget using the database service
             await _databaseService.SaveBudget(Budget);
             await Shell.Current.DisplayAlert("Success", "Budget Created", "OK");
-            await Shell.Current.Navigation.PopAsync();
+            await Shell.Current.GoToAsync("//BudgetPage");
         }
         catch (Exception e)
         {
