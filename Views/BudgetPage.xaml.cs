@@ -1,8 +1,8 @@
 namespace JL_CW_App.Views;
 
-public partial class SavedQuotes
+public partial class BudgetPage
 {
-    public SavedQuotes()
+    public BudgetPage()
     {
         InitializeComponent();
     }

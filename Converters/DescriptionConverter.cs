@@ -12,7 +12,12 @@ public class DescriptionConverter : IValueConverter
         int maxLength = 30;
         try { maxLength = System.Convert.ToInt32(parameter); } catch { }
 
-        return text?.Length <= maxLength ? text : text.Substring(0, maxLength) + "...";
+        if (string.IsNullOrEmpty(text)) // Check for null or empty
+        {
+            return "";  // Or a placeholder string if preferred 
+        } 
+        
+        return text.Length <= maxLength ? text : text.Substring(0, maxLength) + "...";
     }
     
     public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

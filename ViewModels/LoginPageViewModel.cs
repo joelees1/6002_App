@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using MauiMicroMvvm;
 using JL_CW_App.Interfaces;
+using JL_CW_App.Models;
 using JL_CW_App.Views;
 using Newtonsoft.Json;
 using Supabase;
@@ -36,7 +37,7 @@ public class LoginPageViewModel : BaseViewModel
 
     public LoginPageViewModel(ViewModelContext context, IAppState appState): base(context)
     {
-        _supabaseClient = new Client(Constants.Url, Constants.SupabaseKey);
+        _supabaseClient = new Client(AppConfig.SupabaseUrl, AppConfig.SupabaseKey);
         _appState = appState;
         LoginCommand = new Command(async () => await Login(),
             () => !string.IsNullOrEmpty(Email) && !string.IsNullOrEmpty(Password));

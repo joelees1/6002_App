@@ -3,6 +3,7 @@ using JL_CW_App.Interfaces;
 using JL_CW_App.Services;
 using JL_CW_App.ViewModels;
 using JL_CW_App.Views;
+using Microcharts.Maui;
 
 namespace JL_CW_App;
 
@@ -12,6 +13,7 @@ public static class MauiProgram
 	{
 		var builder = MauiApp.CreateBuilder();
 		builder
+			.UseMicrocharts()
 			.UseMauiMicroMvvm<AppShell>(
 				"Resources/Styles/Colors.xaml",
 				"Resources/Styles/Styles.xaml")
@@ -29,19 +31,15 @@ public static class MauiProgram
 			.MapView<RegisterPage, RegisterPageViewModel>()
 			.MapView<ArticlesPage, ArticleViewModel>() // home/articles page
 			.MapView<SingleArticlePage, SingleArticleViewModel>() // single article page
+			.MapView<BudgetPage, BudgetPageViewModel>() // shows a users budget and expense info
+			.MapView<CreateBudgetPage, CreateBudgetPageViewModel>() // provides a form to create a budget
 			.MapView<AccountPage, AccountPageViewModel>()
-			.MapView<AppShell, AppShellViewModel>()
-
-			.MapView<BmiPage, BmiPageViewModel>()
-			.MapView<ClassicMauiPage, ClassicMauiPageViewModel>()
-			.MapView<QuoteGeneratorPage, QuoteGeneratorPageViewModel>()
-			.MapView<SavedQuotes, SavedQuotesViewModel>();
+			.MapView<AppShell, AppShellViewModel>();
 
 		builder.Services.AddSingleton<BaseViewModel>();
 		builder.Services.AddSingleton<IAppState, AppState>();
 		builder.Services.AddSingleton<IArticleService, NewsApiService>();
 		builder.Services.AddSingleton<BaseViewModelMoreSimple>();
-		builder.Services.AddSingleton<IQuoteService, QuoteRealService>();
 		builder.Services.AddSingleton<IDatabaseService, DatabaseService>();
 
 		return builder.Build();

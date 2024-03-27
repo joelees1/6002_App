@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xaml="http://schemas.mauimicromvvm.com/2022/dotnet/maui"
+             xmlns:micro="clr-namespace:Microcharts.Maui;assembly=Microcharts.Maui"
+             xmlns:viewModels="clr-namespace:JL_CW_App.ViewModels"
+             xmlns:models="clr-namespace:JL_CW_App.Models"
+             xmlns:converters="clr-namespace:JL_CW_App.Converters"
+             xaml:MauiMicro.Autowire="True"
+             x:Class="JL_CW_App.Views.BudgetPage"
+             x:DataType="viewModels:BudgetPageViewModel"
+             Title="Budget Overview">
+    
+    <ContentPage.Resources>
+        <converters:PercentageConverter x:Key="PercentageConverter" />
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <StackLayout>
+            <micro:ChartView Chart="{Binding Chart}" HeightRequest="300" Margin="10"/>
+            
+            <Border BackgroundColor="#396FD5" StrokeThickness="0" Margin="20,20,20,10" StrokeShape="RoundRectangle 10">
+                <StackLayout Margin="15" Spacing="10">
+                    <Label Text="Income" TextColor="White" FontSize="14" FontFamily="" FontAttributes="Bold" />
+                    <Label Text="{Binding Budget.Income, StringFormat='{}{0:C}'}" TextColor="White"
+                           FontSize="18" FontFamily="" FontAttributes="Bold" />
+                </StackLayout>
+            </Border>
+           
+            <CollectionView ItemsSource="{Binding BudgetItems}">   
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:BudgetItem">
+                        <Grid Padding="20, 5">
+                        <Border Padding="5" StrokeShape="RoundRectangle 10">
+                            <Grid Padding="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label Grid.Column="0" Text="{Binding Category}" FontSize="14" FontFamily="" 
+                                       FontAttributes="Bold" VerticalTextAlignment="Center" />
+                                <Label Grid.Column="1" Text="{Binding Amount, StringFormat='{}{0:C}'}"
+                                       FontSize="18" FontFamily="" FontAttributes="Bold" HorizontalOptions="Center" VerticalTextAlignment="Center"/>
+                                <Label Grid.Column="2" Text="{Binding IncomePercentage, StringFormat='{0}%'}" FontSize="14" 
+                                       FontFamily="" FontAttributes="Bold" VerticalTextAlignment="Center" HorizontalOptions="End"
+                                       TextColor="{Binding IncomePercentage, Converter={StaticResource PercentageConverter}}"/>
+                            </Grid>
+                        </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+            
+            <Button Margin="20" Command="{Binding DeleteBudgetCommand}"
+                    BackgroundColor="DarkRed" TextColor="White" FontFamily="" FontAttributes="Bold" Text="Delete Budget"/>
+
+        </StackLayout>
+    </ScrollView>
+
+</ContentPage>

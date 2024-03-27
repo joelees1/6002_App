@@ -1,13 +1,14 @@
+using Supabase;
+
 namespace JL_CW_App
 {
     public static class Constants
     {
-        public static string RestEndpointBase = "https://api.quotable.io";
+        public static string RestEndpointBase = "https://newsdata.io/api/1";
 
         public static class Endpoints
         {
-            public static string RandomQuote = "/random";
-            public static string ListRandomQuotes = "/quotes";
+            public static string News = "/news";
         }
         
           public const SQLite.SQLiteOpenFlags Flags =

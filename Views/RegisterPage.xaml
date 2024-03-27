@@ -11,8 +11,7 @@
              BackgroundColor="WhiteSmoke"
              Shell.BackgroundColor="WhiteSmoke"
              Title="💷 💵 💶">
-
-
+    
     <VerticalStackLayout Padding="15, 50" HorizontalOptions="Center" MaximumWidthRequest="375">
         <Label Text="Dough-Joe"
                HorizontalOptions="Center"

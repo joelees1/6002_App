@@ -9,10 +9,4 @@ public partial class ArticlesPage
     {
         InitializeComponent();
     }
-
-    private void ListView_OnItemTapped(object? sender, ItemTappedEventArgs e)
-    {
-        var article = e.Item as NewsArticle; 
-        (BindingContext as ArticleViewModel)?.NavigateToSingleArticlePageCommand.Execute(article);
-    }
 }
