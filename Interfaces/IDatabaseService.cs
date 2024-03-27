@@ -7,6 +7,6 @@ namespace JL_CW_App.Interfaces
         Task<Budget> GetBudget(string email);
         Task SaveBudget(Budget budget);
         //Task<Budget> EditBudget(Budget budget);
-        //Task<Budget> DeleteBudget(string email);
+        Task DeleteBudget(string email);
     }
 }

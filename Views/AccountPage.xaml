@@ -11,7 +11,7 @@
     
     <StackLayout>
 
-        <Border BackgroundColor="LightBlue" StrokeThickness="0">
+        <Border BackgroundColor="LightBlue" StrokeThickness="0" Margin="10" StrokeShape="RoundRectangle 10,10,10,10">
             <StackLayout Margin="15,20">
                 <Label Text="Account Information" FontSize="18" FontFamily="" FontAttributes="Bold"/>
                 <Label Text="Your Email:" FontSize="16" FontFamily="" FontAttributes="Bold" Margin="0,30,0,5"/>

@@ -28,4 +28,11 @@ public class DatabaseService : IDatabaseService
         // Insert the budget into the database from the budget object
         await _supabaseClient.From<Budget>().Insert(budget);
     }
+    
+    // Delete a budget
+    public async Task DeleteBudget(string email)
+    {
+        // Delete the budget from the database using the email
+        await _supabaseClient.From<Budget>().Where(x => x.User == email).Delete();
+    }
 }
