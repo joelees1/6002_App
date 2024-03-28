@@ -10,45 +10,61 @@
              x:Class="JL_CW_App.Views.ArticlesPage"
              x:DataType="viewModels:ArticleViewModel"
              Title="Articles">
-    
+
     <ContentPage.Resources>
-        <converters:DescriptionConverter x:Key="DescriptionConverter"/>
+        <converters:DescriptionConverter x:Key="DescriptionConverter" />
     </ContentPage.Resources>
 
-    <StackLayout>
-        <Label Text="Welcome to Dough-Joe!"
-               Padding="0, 20, 0, 10"
-               HorizontalOptions="Center"
-               FontFamily=""
-               FontSize="Large" />
-        
-        <CollectionView ItemsSource="{Binding Articles}" SelectionMode="Single" 
-                        SelectedItem="{Binding SelectedArticle}"
-                        SelectionChangedCommand="{Binding NavigateToSingleArticlePageCommand}"
-                        SelectionChangedCommandParameter="{Binding SelectedArticle}">
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:NewsArticle">
-                    
-                    <Grid Padding="10, 5">
-                        <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
-                            <StackLayout Spacing="3">
-                                <!-- fontfamily="" otherwise font attributes dont work, StringFormat='{0:MMMM d, yyyy}' -->
-                                <Label TextColor="Black" Text="{Binding Title, 
+    <ScrollView>
+        <StackLayout>
+            <Label Text="Welcome to Dough-Joe!"
+                   Padding="0, 20, 0, 5"
+                   HorizontalOptions="Center"
+                   FontFamily=""
+                   FontSize="Large" />
+
+            <HorizontalStackLayout HorizontalOptions="Center">
+                <Button Margin="10" Command="{Binding StudentArticlesCommand}" HorizontalOptions="Center"
+                        BackgroundColor="LightBlue" TextColor="Black" FontFamily="" FontAttributes="Bold"
+                        Text="Student News" />
+                <Button Margin="10" Command="{Binding UkArticlesCommand}" HorizontalOptions="Center"
+                        BackgroundColor="LightBlue" TextColor="Black" FontFamily="" FontAttributes="Bold"
+                        Text="General UK News" />
+            </HorizontalStackLayout>
+
+            <CollectionView ItemsSource="{Binding Articles}" SelectionMode="Single"
+                            SelectedItem="{Binding SelectedArticle}"
+                            SelectionChangedCommand="{Binding NavigateToSingleArticlePageCommand}"
+                            SelectionChangedCommandParameter="{Binding SelectedArticle}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:NewsArticle">
+
+                        <Grid Padding="10, 5">
+                            <Frame BorderColor="LightGray" CornerRadius="10" Padding="15">
+                                <StackLayout Spacing="3">
+                                    <!-- fontfamily="" otherwise font attributes dont work, StringFormat='{0:MMMM d, yyyy}' -->
+                                    <Label TextColor="Black"
+                                           Text="{Binding Title, 
                                         Converter={StaticResource DescriptionConverter}, 
-                                        ConverterParameter=90}" FontAttributes="Bold" FontFamily=""/>
-                                
-                                <Label TextColor="Black" Text="{Binding Description,
+                                        ConverterParameter=90}"
+                                           FontAttributes="Bold" FontFamily="" />
+
+                                    <Label TextColor="Black"
+                                           Text="{Binding Description,
                                         Converter={StaticResource DescriptionConverter}, 
-                                        ConverterParameter=90}" FontFamily="" />
-                                
-                                <Label Text="{Binding PubDate}" 
-                                       TextColor="Gray" FontSize="12" FontFamily=""/>
-                            </StackLayout>
-                        </Frame>
-                    </Grid>
-                    
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </StackLayout>
+                                        ConverterParameter=90}"
+                                           FontFamily="" />
+
+                                    <Label Text="{Binding PubDate}"
+                                           TextColor="Gray" FontSize="12" FontFamily="" />
+                                </StackLayout>
+                            </Frame>
+                        </Grid>
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>
