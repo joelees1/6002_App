@@ -10,7 +10,7 @@
              Shell.FlyoutBehavior="Disabled"
              BackgroundColor="WhiteSmoke"
              Shell.BackgroundColor="WhiteSmoke"
-             Title="💷 💵 💶">
+             Title="💷 Registration 💶">
     
     <VerticalStackLayout Padding="15, 50" HorizontalOptions="Center" MaximumWidthRequest="375">
         <Label Text="Dough-Joe"
