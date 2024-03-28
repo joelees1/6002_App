@@ -3,5 +3,5 @@ namespace JL_CW_App.Interfaces;
 
 public interface IArticleService
 {
-    public Task<List<NewsArticle>> GetArticles();
+    public Task<List<NewsArticle>> GetArticles(int category);
 }

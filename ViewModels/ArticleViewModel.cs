@@ -12,12 +12,15 @@ public class ArticleViewModel : BaseViewModel
     private readonly IArticleService _articleService;
     public ObservableCollection<NewsArticle> Articles { get; set; } = new ();
     public NewsArticle SelectedArticle { get; set; } // CollectionView.SelectedItem
-    
+    public ICommand StudentArticlesCommand { get; set; }
+    public ICommand UkArticlesCommand { get; set; }
     public ICommand NavigateToSingleArticlePageCommand { get; }
 
     public ArticleViewModel(ViewModelContext context, IArticleService articleService) : base(context)
     {
         _articleService = articleService;
+        StudentArticlesCommand = new Command(async () => await InitialiseArticles(1));
+        UkArticlesCommand = new Command(async () => await InitialiseArticles(2));
         NavigateToSingleArticlePageCommand = new Command( () => NavigateToSingleArticlePage(SelectedArticle));
     }
     
@@ -26,7 +29,7 @@ public class ArticleViewModel : BaseViewModel
         base.OnAppearing();
         try
         {
-            await InitialiseArticles();
+            await InitialiseArticles(1);
         }
         catch (Exception e)
         {
@@ -35,9 +38,10 @@ public class ArticleViewModel : BaseViewModel
         }
     }
     
-    private async Task InitialiseArticles()
+    private async Task InitialiseArticles(int category)
     {
-        var articles = await _articleService.GetArticles();
+        Articles.Clear();
+        var articles = await _articleService.GetArticles(category);
         foreach (var article in articles)
         {
             Articles.Add(article);
