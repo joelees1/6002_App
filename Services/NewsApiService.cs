@@ -6,6 +6,7 @@ using JL_CW_App.Models;
 
 namespace JL_CW_App.Services;
 
+// Service to fetch news articles from the News API
 public class NewsApiService : IArticleService
 {
     private readonly HttpClient _client = new();
@@ -16,6 +17,7 @@ public class NewsApiService : IArticleService
         WriteIndented = true
     };
 
+    // Fetches news articles from the News API based on the category
     public async Task<List<NewsArticle>> GetArticles(int category)
     {
         Uri uri;
@@ -38,14 +40,13 @@ public class NewsApiService : IArticleService
 
         try
         {
-            HttpResponseMessage response = await _client.GetAsync(uri);
+            HttpResponseMessage response = await _client.GetAsync(uri); // Send the GET request
             if (response.IsSuccessStatusCode)
             {
                 string content = await response.Content.ReadAsStringAsync();
                 var dto = JsonSerializer.Deserialize<NewsApiServiceGetArticlesResponse>(content, _serializerOptions);
-                return dto.Results;
+                return dto.Results; // Return the list of news articles
             }
-
             return new List<NewsArticle>();
         }
         catch (Exception ex)

@@ -3,6 +3,7 @@ using Postgrest.Models;
 
 namespace JL_CW_App.Models;
 
+// Budget model for the table in supabase, with corresponding columns
 [Table("Budgets")]
 public class Budget : BaseModel
 {

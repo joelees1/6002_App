@@ -4,6 +4,10 @@ using Newtonsoft.Json.Converters;
 
 namespace JL_CW_App.Converters;
 
+/*
+ * unused converter to take json string and convert it to a formatted DateTime object,
+ * doesnt work
+ */
 public class DateTimeConverter : DateTimeConverterBase
 {
     public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)

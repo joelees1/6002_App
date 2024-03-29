@@ -24,6 +24,8 @@ public class ArticleViewModel : BaseViewModel
         NavigateToSingleArticlePageCommand = new Command( () => NavigateToSingleArticlePage(SelectedArticle));
     }
     
+    // This method is called when the page is navigated to
+    // initialises the articles collection with the result from the API
     public override async void OnAppearing()
     {
         base.OnAppearing();
@@ -48,6 +50,8 @@ public class ArticleViewModel : BaseViewModel
         }
     }
     
+    // This method is called when the user selects an article
+    // Navigates to the SingleArticlePage and passes the selected article as a query parameter
     private async Task NavigateToSingleArticlePage(NewsArticle article)
     {
         // Navigate to the SingleArticlePage and pass the selected article as a parameter

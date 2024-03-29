@@ -8,23 +8,18 @@ public class AppShellViewModel : BaseViewModel
 {
     private readonly IAppState _state;
     public ICommand LogOutCommand { get; set; }
-    public ICommand AccountPageCommand { get; set; }
     
     public AppShellViewModel(ViewModelContext context, IAppState state) : base(context)
     {
         _state = state;
         LogOutCommand = new Command(ExecuteLogout);
-        AccountPageCommand = new Command(NavigateToAccountPage);
     }
 
+    // This method is called when the user clicks the logout button
+    // It sets the current user to null and navigates to the login page
     private void ExecuteLogout()
     {
         _state.CurrentUser = null;
         Shell.Current.GoToAsync("//login");
-    }
-    
-    private void NavigateToAccountPage()
-    {
-        Shell.Current.GoToAsync("//AccountPage");
     }
 }

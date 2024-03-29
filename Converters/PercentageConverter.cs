@@ -2,6 +2,7 @@ using System.Globalization;
 
 namespace JL_CW_App.Converters;
 
+// Convert the percentage value to a color that is used for the budget percentage text color
 public class PercentageConverter : IValueConverter
 {
     public object Convert(object value, Type targetType, object parameter, CultureInfo culture)

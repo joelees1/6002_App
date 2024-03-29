@@ -2,7 +2,6 @@ using System.Collections.ObjectModel;
 using System.Windows.Input;
 using JL_CW_App.Interfaces;
 using JL_CW_App.Models;
-using JL_CW_App.Views;
 using MauiMicroMvvm;
 using Microcharts;
 
