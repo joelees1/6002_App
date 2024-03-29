@@ -1,6 +1,9 @@
 # Dough-Joe
 #### 6002CEM Mobile App Development Coursework
 
+## YouTube Video: 
+https://youtu.be/cyM_bcN_nfo
+
 ## Overview
 
 Many students struggle to balance limited student loan or part-time work income with the increasing costs of rent, education, food, and other necessities. Dough-Joe aims to provide a resource for better financial literacy and a tool by which users can better plan and manage their expenses. This empowers users to better control their finances by tracking income and planned budgets alongside visualising this in a clear UI interface.
